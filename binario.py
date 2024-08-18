@@ -34,6 +34,13 @@ def pst():
 
         res=session.post('https://www.puzzle-binairo.com/',data=[("param",param),("b",b),("w",w),("h",h),("size",size),("ansH",ans),("robot","1"),("ready","+++Done+++")])
         # print(res.text)
+        par = res.text.split('solparams" value="')[1].split('"')[0]
+        print(par)
+        # open("res.html",'w').write(res.text)
+
+        # a=session.post('https://www.puzzle-star-battle.com/hallsubmit.php',data=[("solparams",par),("robot","1")])
+        a = session.post('https://www.puzzle-star-battle.com/hallsubmit.php', data=[("solparams", par), ("robot", "1"), ("email", "cfinn68916@gmail.com"), ("submitscore", "1")])
+
         res.raise_for_status()
         return task, ans
 
